@@ -10,19 +10,18 @@
     box-sizing: border-box;
 
 }
-nav{
+.high-scores {
     margin: 10px;
     display: flex;
     display: row;
+    background-color: purple;
+    color: white;
+    text-decoration: none;
 }
 
 #timer{
     display: flex;
     text-align: right;
-}
-
-#start-screen {
-    text-align: center;
 }
 
 h1{
@@ -31,3 +30,38 @@ h1{
     margin: 40px;
 }
 
+h2 {
+    font-size: 20px;
+}
+
+.content {
+    width: 100vw;
+    height: 50vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    padding: 10px;
+}
+
+.flex-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.flex-center {
+    justify-content: center;
+    align-items: center;
+}
+
+.start-button {
+    background-color: purple;
+    color: white;
+    text-decoration: none;
+    padding: 5px;
+}
+
+.start-button:hover {
+    cursor: pointer;
+    
+}
