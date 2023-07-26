@@ -1,5 +1,5 @@
 :root{
-    background-color: dimgray;
+    background-color: black;
 }
 
 *{
@@ -10,28 +10,35 @@
     box-sizing: border-box;
 
 }
-.high-scores {
+#high-scores {
     margin: 10px;
     display: flex;
-    display: row;
+    justify-content: center;
+    align-items: center;
     background-color: purple;
     color: white;
     text-decoration: none;
+    padding: 5px;
 }
 
 #timer{
     display: flex;
-    text-align: right;
+    justify-content: centerxs;
+    align-items: center;
+    text-align: center;
+    color: white;
 }
 
 h1{
     text-align: center;
     font-size: 40px;
     margin: 40px;
+    color: white;
 }
 
 h2 {
     font-size: 20px;
+    color: white;
 }
 
 .content {
@@ -63,5 +70,10 @@ h2 {
 
 .start-button:hover {
     cursor: pointer;
-    
+    box-shadow: 10px 5px 5px violet;
+    transform: scale(1.05);
+}
+
+.hidden {
+    display: none;
 }
