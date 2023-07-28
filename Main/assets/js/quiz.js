@@ -4,11 +4,20 @@ var timerEl = document.querySelector("#timer");
 var highScoresBtn = document.querySelector("#high-scores");
 var startScreenEl = document.getElementById("start-screen");
 var questionScreenEl = document.querySelector("#question-screen");
+// question/answer buttons
+var question = document.querySelector("#question");
+var buttonOne = document.querySelector("#a");
+var buttonTwo = document.querySelector("#b");
+var buttonThree = document.querySelector("#c");
+var buttonFour = document.querySelector("#d");
+// timer
 var timer = 76;
+// question
+var questionNumber = 0;
 
-questions = [
+questionsArray = [
     {
-        title: 'Which set of characters defines an array',
+        title: 'Which set of characters defines an array?',
         options: ['[]', '{}', '()', '||'],
         correctOption: '[]'
     },
@@ -60,16 +69,24 @@ function questionScreen() {
     startScreenEl.classList.add("hidden");
     highScoresBtn.classList.add("hidden");
     
-    // display the first set of questions
+    // display the first set of questions/answers
     questionScreenEl.classList.remove("hidden");
+
+    question.textContent = questionsArray[0].title;
+    
+    buttonOne.textContent = questionsArray[0].options[0];
+    buttonTwo.textContent = questionsArray[0].options[1];
+    buttonThree.textContent = questionsArray[0].options[2];
+    buttonFour.textContent = questionsArray[0].options[3];
+
     
 }
 
 function clickedButton(event) {
     if (event.target.className === "answer"){
-        var answer = event.target.innerText;
-        console.log(answer);
+        var Useranswer = event.target.innerText;
     }
+
 }
 
 questionScreenEl.addEventListener('click', clickedButton);
