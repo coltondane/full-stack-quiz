@@ -13,7 +13,7 @@
 <body>
     <header>
         <nav>
-            <a href="/high-scores.html" id="high-scores">View High Scores</a>
+            <button id="high-scores">View High Scores</button>
             <p id="timer">Time: </p>
         </nav>
     </header>
@@ -25,10 +25,17 @@
                 Do your best to answer as many questions correctly as you can before the time expires! Good Luck!
             </h2>
             <!-- create a tag for the star button link -->
-            <a href="quiz.html" class="start-button">Start</a>
+            <button class="start-button">Start</button>
+        </section>
+        <section id="question-screen" class="flex-center flex-column">
+            <h1>question</h1>
+            <button id="a" class="answer">a</button>
+            <button id="b" class="answer">b</button>
+            <button id="c" class="answer">c</button>
+            <button id="d" class="answer">d</button>
         </section>
 
     </main>
-    
+    <script src="./assets/js/quiz.js"></script>
 </body>
 </html>

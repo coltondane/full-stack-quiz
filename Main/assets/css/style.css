@@ -10,15 +10,24 @@
     box-sizing: border-box;
 
 }
+
+nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
 #high-scores {
     margin: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     background-color: purple;
     color: white;
     text-decoration: none;
     padding: 5px;
+}
+
+#high-scores:hover {
+    cursor: pointer;
+    box-shadow: 10px 5px 5px violet;
+    transform: scale(1.05);
 }
 
 #timer{
@@ -27,11 +36,12 @@
     align-items: center;
     text-align: center;
     color: white;
+    padding: 30px;
 }
 
 h1{
     text-align: center;
-    font-size: 40px;
+    font-size: 45px;
     margin: 40px;
     color: white;
 }
@@ -39,6 +49,8 @@ h1{
 h2 {
     font-size: 20px;
     color: white;
+    margin: 5px;
+    padding: 20px;
 }
 
 .content {
@@ -73,6 +85,8 @@ h2 {
     box-shadow: 10px 5px 5px violet;
     transform: scale(1.05);
 }
+
+
 
 .hidden {
     display: none;
