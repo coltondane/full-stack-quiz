@@ -1,13 +1,18 @@
-// varibles 
+// varibles for start
 var startEl = document.querySelector(".start-button");
 var timerEl = document.querySelector("#timer");
 var highScoresBtn = document.querySelector("#high-scores");
 var startScreenEl = document.getElementById("start-screen");
+// for questions
 var questionScreenEl = document.querySelector("#question-screen");
+// for submit screen
 var enterScreenEl = document.querySelector("#enter-initials");
 var finalScoreEl = document.querySelector("#final-score");
 var labelEl = document.querySelector("#initials");
 var submitEl = document.querySelector("#initial-submit");
+// for high scores
+var highScoresScreenEl = document.querySelector("#high-scores-screen");
+var scoresListEl = document.querySelector("#scores-list");
 // question/answer buttons
 var question = document.querySelector("#question");
 var buttonOne = document.querySelector("#a");
@@ -53,6 +58,7 @@ questionsArray = [
 questionScreenEl.classList.add("hidden");
 enterScreenEl.classList.add("hidden");
 timerEl.classList.add("hidden");
+highScoresScreenEl.classList.add("hidden");
 
 // decalre functions
 function startGanme() {
@@ -85,6 +91,7 @@ function hideStartScreen() {
     questionScreenEl.classList.remove("hidden");
 }
 
+// display questions
 function displayQuestions() {
 
     // set the varibles to the question/answer values
@@ -96,6 +103,7 @@ function displayQuestions() {
 
 }
 
+// conditionals 
 function clickedButton(event) {
     if (event.target.className === "answer"){
         var userAnswer = event.target.innerText;
@@ -144,10 +152,27 @@ function quizEnd () {
     localStorage.setItem("score", score)
 }
 
-function logScore() {
+function highScore() {
     // log the users initials
     var userInitials = labelEl.value.toUpperCase();
-    localStorage.setItem("Initials", userInitials);
+    localStorage.setItem("initials", userInitials);
+
+    // hide the input screen
+    enterScreenEl.classList.add("hidden");
+    // display the high scores screen
+    highScoresScreenEl.classList.remove("hidden");
+    // display scores
+    displayScores();
+}
+
+function displayScores() {
+    var score = localStorage.getItem("score");
+    var initials = localStorage.getItem("initials");
+    console.log(score, initials);
+    var newScore = document.createElement("p"); 
+    newScore.textContent = initials + " - " + score;
+    scoresListEl.append(newScore);
+
 }
 
 // clicks answers
@@ -157,4 +182,6 @@ questionScreenEl.addEventListener('click', clickedButton);
 // clicks start button
 startEl.addEventListener("click", startGanme);
 // clicks submit button
-submitEl.addEventListener("click", logScore);
+submitEl.addEventListener("click", highScore);
+// clicks high scores button
+highScoresBtn.addEventListener("click", displayScores);
