@@ -4,6 +4,7 @@ var timerEl = document.querySelector("#timer");
 var highScoresBtn = document.querySelector("#high-scores");
 var startScreenEl = document.getElementById("start-screen");
 var questionScreenEl = document.querySelector("#question-screen");
+var highScoresScreenEl = document.querySelector("#high-scores-screen");
 // question/answer buttons
 var question = document.querySelector("#question");
 var buttonOne = document.querySelector("#a");
@@ -27,7 +28,7 @@ questionsArray = [
         correctOption: '&& or ||'
     },
     {
-        title: 'Where in an HTML file wpuld a programmer put a bootstrap link',
+        title: 'Where in an HTML file would a programmer put a bootstrap link',
         options: ['in the file header', 'in the body element', 'in the file head', 'at the bottom of the file'],
         correctOption: 'in the file head'
     },
@@ -43,14 +44,16 @@ questionsArray = [
     }
 ]
 
-// hide questions and timer
+// hide questions/ high scores and timer
 questionScreenEl.classList.add("hidden");
+highScoresScreenEl.classList.add("hidden");
 timerEl.classList.add("hidden");
 
 // decalre functions
 function startGanme() {
     startTimer();
-    questionScreen();
+    hideStartScreen();
+    displayQuestions();
 }
 
 function startTimer() {
@@ -64,29 +67,60 @@ function startTimer() {
     }, 1000)
 }
 
-function questionScreen() {
+function hideStartScreen() {
     // set the start screen to display none
     startScreenEl.classList.add("hidden");
     highScoresBtn.classList.add("hidden");
-    
-    // display the first set of questions/answers
+
+    // display the questions screen
     questionScreenEl.classList.remove("hidden");
+}
 
-    question.textContent = questionsArray[0].title;
-    
-    buttonOne.textContent = questionsArray[0].options[0];
-    buttonTwo.textContent = questionsArray[0].options[1];
-    buttonThree.textContent = questionsArray[0].options[2];
-    buttonFour.textContent = questionsArray[0].options[3];
+function displayQuestions() {
 
-    
+    // set the varibles to the question/answer values
+    question.textContent = questionsArray[questionNumber].title;
+    buttonOne.textContent = questionsArray[questionNumber].options[0];
+    buttonTwo.textContent = questionsArray[questionNumber].options[1];
+    buttonThree.textContent = questionsArray[questionNumber].options[2];
+    buttonFour.textContent = questionsArray[questionNumber].options[3];   
+
 }
 
 function clickedButton(event) {
     if (event.target.className === "answer"){
-        var Useranswer = event.target.innerText;
+        var userAnswer = event.target.innerText;
+        if (userAnswer === questionsArray[questionNumber].correctOption) {
+            // alert the user 
+            alert("Correct!")
+            // increment question number
+            if (questionNumber <= questionsArray.length) {
+                // increment the question number
+                questionNumber++;
+                // display next set of questions
+                console.log("question " + questionNumber);
+                if (questionNumber < 5) {
+                    displayQuestions();
+                }
+                else {
+                    var score = timer;
+                    clearInterval(timer);
+                    // hide the questions
+                    questionScreenEl.classList.add("hidden");
+                    // display high scores
+                    highScoresScreenEl.classList.remove("hidden");
+                }
+            }
+        }
+        else {
+            alert("Incorrect :(");
+            timer = timer - 10;
+            // increment question number
+            questionNumber++;
+            // display next set of questions
+            displayQuestions();
+        }
     }
-
 }
 
 questionScreenEl.addEventListener('click', clickedButton);
