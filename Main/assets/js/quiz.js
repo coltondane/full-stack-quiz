@@ -74,10 +74,14 @@ function startTimer() {
         if (timer === 0) {
             clearInterval(timeLeft);
             // call logic for when timer runs out
-            alert("Times Up!");
+            alert("End of Quiz! Time has either expired or you've answered all of the questions!");
             questionScreenEl.classList.add("hidden");
             enterScreenEl.classList.remove("hidden");
 
+             // display score
+            finalScoreEl.textContent = "Your Score: " + score;
+            // log the users score in local storage
+            localStorage.setItem("score", score)
         }
     }, 1000)
 }
@@ -115,7 +119,10 @@ function clickedButton(event) {
             questionNumber++;
             // if the question number had reached the end of the array end the quiz
             if (questionNumber === questionsArray.length) {
-                quizEnd();
+                // set score
+                score = timer;
+                // set timer to end quiz
+                timer = 1;
             }
             // else display the next set of questions
             else {
@@ -128,7 +135,8 @@ function clickedButton(event) {
             timer = timer - 10;
             questionNumber++;
             if (questionNumber === questionsArray.length) {
-                quizEnd();
+                score = timer;
+                timer = 1;
             }
             // else display the next set of questions
             else {
@@ -137,19 +145,6 @@ function clickedButton(event) {
         }
     
     }
-}
-
-// function for end of test 
-function quizEnd () {
-    var score = timer;
-    // hide the questions
-    questionScreenEl.classList.add("hidden");
-    // display intitial screen
-    enterScreenEl.classList.remove("hidden");
-    // display score
-    finalScoreEl.textContent = "Your Score: " + score;
-    // log the users score in local storage
-    localStorage.setItem("score", score)
 }
 
 function highScore() {
