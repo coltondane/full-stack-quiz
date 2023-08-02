@@ -79,14 +79,15 @@ h3 {
     align-items: center;
 }
 
-.start-button {
+button {
+    margin: 1px;
     background-color: purple;
     color: white;
     text-decoration: none;
-    padding: 5px;
+    padding: 10px;
 }
 
-.start-button:hover {
+button:hover {
     cursor: pointer;
     box-shadow: 10px 5px 5px violet;
     transform: scale(1.05);
