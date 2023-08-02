@@ -15,6 +15,8 @@ var buttonFour = document.querySelector("#d");
 var timer = 76;
 // question
 var questionNumber = 0;
+// score
+var score = 0;
 
 questionsArray = [
     {
@@ -48,8 +50,6 @@ questionsArray = [
 questionScreenEl.classList.add("hidden");
 highScoresScreenEl.classList.add("hidden");
 timerEl.classList.add("hidden");
-
-console.log(questionsArray.length);
 
 // decalre functions
 function startGanme() {
@@ -115,15 +115,14 @@ function clickedButton(event) {
         else {
             alert("Incorrect :(");
             timer = timer - 10;
-            if (questionNumber != questionsArray.lenght){
-                // increment question number
-                questionNumber++;
-                // display next set of questions
-                displayQuestions();
-            } 
-            else {
+            questionNumber++;
+            if (questionNumber === questionsArray.length) {
                 quizEnd();
-            }   
+            }
+            // else display the next set of questions
+            else {
+                displayQuestions();
+            }
         }
     
     }
