@@ -49,6 +49,8 @@ questionScreenEl.classList.add("hidden");
 highScoresScreenEl.classList.add("hidden");
 timerEl.classList.add("hidden");
 
+console.log(questionsArray.length);
+
 // decalre functions
 function startGanme() {
     startTimer();
@@ -63,6 +65,10 @@ function startTimer() {
         if (timer === 0) {
             clearInterval(timeLeft);
             // call logic for when timer runs out
+            alert("Times Up!");
+            questionScreenEl.classList.add("hidden");
+            highScoresScreenEl.classList.remove("hidden");
+
         }
     }, 1000)
 }
@@ -90,38 +96,49 @@ function displayQuestions() {
 function clickedButton(event) {
     if (event.target.className === "answer"){
         var userAnswer = event.target.innerText;
+        // if the answer is correct
         if (userAnswer === questionsArray[questionNumber].correctOption) {
             // alert the user 
             alert("Correct!")
-            // increment question number
-            if (questionNumber <= questionsArray.length) {
-                // increment the question number
-                questionNumber++;
-                // display next set of questions
-                console.log("question " + questionNumber);
-                if (questionNumber < 5) {
-                    displayQuestions();
-                }
-                else {
-                    var score = timer;
-                    clearInterval(timer);
-                    // hide the questions
-                    questionScreenEl.classList.add("hidden");
-                    // display high scores
-                    highScoresScreenEl.classList.remove("hidden");
-                }
+            // increment question counter
+            questionNumber++;
+            // if the question number had reached the end of the array end the quiz
+            if (questionNumber === questionsArray.length) {
+                quizEnd();
+            }
+            // else display the next set of questions
+            else {
+                displayQuestions();
             }
         }
+        // if the answer is incorrect
         else {
             alert("Incorrect :(");
             timer = timer - 10;
-            // increment question number
-            questionNumber++;
-            // display next set of questions
-            displayQuestions();
+            if (questionNumber != questionsArray.lenght){
+                // increment question number
+                questionNumber++;
+                // display next set of questions
+                displayQuestions();
+            } 
+            else {
+                quizEnd();
+            }   
         }
+    
     }
 }
+
+// function for end of test 
+function quizEnd () {
+    var score = timer;
+    clearInterval(timer);
+    // hide the questions
+    questionScreenEl.classList.add("hidden");
+    // display high scores
+    highScoresScreenEl.classList.remove("hidden");
+}
+
 
 questionScreenEl.addEventListener('click', clickedButton);
 
