@@ -53,6 +53,12 @@ h2 {
     padding: 20px;
 }
 
+h3 {
+    color: white;
+    margin: 5px;
+    padding: 20px;
+}
+
 .content {
     width: 100vw;
     height: 50vw;

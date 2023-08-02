@@ -4,7 +4,7 @@ var timerEl = document.querySelector("#timer");
 var highScoresBtn = document.querySelector("#high-scores");
 var startScreenEl = document.getElementById("start-screen");
 var questionScreenEl = document.querySelector("#question-screen");
-var highScoresScreenEl = document.querySelector("#high-scores-screen");
+var enterScreenEl = document.querySelector("#enter-initials");
 // question/answer buttons
 var question = document.querySelector("#question");
 var buttonOne = document.querySelector("#a");
@@ -48,7 +48,7 @@ questionsArray = [
 
 // hide questions/ high scores and timer
 questionScreenEl.classList.add("hidden");
-highScoresScreenEl.classList.add("hidden");
+enterScreenEl.classList.add("hidden");
 timerEl.classList.add("hidden");
 
 // decalre functions
@@ -67,7 +67,7 @@ function startTimer() {
             // call logic for when timer runs out
             alert("Times Up!");
             questionScreenEl.classList.add("hidden");
-            highScoresScreenEl.classList.remove("hidden");
+            enterScreenEl.classList.remove("hidden");
 
         }
     }, 1000)
@@ -131,11 +131,11 @@ function clickedButton(event) {
 // function for end of test 
 function quizEnd () {
     var score = timer;
-    clearInterval(timer);
+    console.log(score);
     // hide the questions
     questionScreenEl.classList.add("hidden");
-    // display high scores
-    highScoresScreenEl.classList.remove("hidden");
+    // display intitial screen
+    enterScreenEl.classList.remove("hidden");
 }
 
 
