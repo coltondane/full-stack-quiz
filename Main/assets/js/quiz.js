@@ -5,6 +5,9 @@ var highScoresBtn = document.querySelector("#high-scores");
 var startScreenEl = document.getElementById("start-screen");
 var questionScreenEl = document.querySelector("#question-screen");
 var enterScreenEl = document.querySelector("#enter-initials");
+var finalScoreEl = document.querySelector("#final-score");
+var labelEl = document.querySelector("#initials");
+var submitEl = document.querySelector("#initial-submit");
 // question/answer buttons
 var question = document.querySelector("#question");
 var buttonOne = document.querySelector("#a");
@@ -131,17 +134,27 @@ function clickedButton(event) {
 // function for end of test 
 function quizEnd () {
     var score = timer;
-    console.log(score);
     // hide the questions
     questionScreenEl.classList.add("hidden");
     // display intitial screen
     enterScreenEl.classList.remove("hidden");
+    // display score
+    finalScoreEl.textContent = "Your Score: " + score;
+    // log the users score in local storage
+    localStorage.setItem("score", score)
 }
 
+function logScore() {
+    // log the users initials
+    var userInitials = labelEl.value.toUpperCase();
+    localStorage.setItem("Initials", userInitials);
+}
 
+// clicks answers
 questionScreenEl.addEventListener('click', clickedButton);
 
-
 // event listener/start app
-    // clicks start button, timer starts, first question displayed
-    startEl.addEventListener("click", startGanme);
+// clicks start button
+startEl.addEventListener("click", startGanme);
+// clicks submit button
+submitEl.addEventListener("click", logScore);
