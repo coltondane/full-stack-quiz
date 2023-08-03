@@ -12,7 +12,7 @@ var labelEl = document.querySelector("#initials");
 var submitEl = document.querySelector("#initial-submit");
 // for high scores
 var highScoresScreenEl = document.querySelector("#high-scores-screen");
-var scoresListEl = document.querySelector("#scores-list");
+var scoresListEl = document.querySelector("#list-element");
 // question/answer buttons
 var question = document.querySelector("#question");
 var buttonOne = document.querySelector("#a");
@@ -159,19 +159,22 @@ function highScore() {
 }
 
 function displayScores() {
+    if (startScreenEl.classList !== "hidden") {
+        startScreenEl.classList.add("hidden");
+    }
     // display the high scores screen
-    highScoresScreenEl.classList.remove("hidden");
     // gather the local storage elements
     var score = localStorage.getItem("score");
     var initials = localStorage.getItem("initials");
     console.log(score, initials);
     // create a new tag for the element
-    var newScore = document.createElement("p"); 
+    var newScore = document.createElement("li"); 
     // set the text content
     newScore.textContent = initials + " - " + score;
     console.log(newScore);
     // append to the html
     scoresListEl.append(newScore);
+    highScoresScreenEl.classList.remove("hidden");
 }
 
 // clicks answers

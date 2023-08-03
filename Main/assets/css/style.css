@@ -59,6 +59,10 @@ h3 {
     padding: 20px;
 }
 
+li {
+    color: white;
+}
+
 .content {
     width: 100vw;
     height: 50vw;
