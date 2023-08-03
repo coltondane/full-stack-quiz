@@ -166,12 +166,10 @@ function displayScores() {
     // gather the local storage elements
     var score = localStorage.getItem("score");
     var initials = localStorage.getItem("initials");
-    console.log(score, initials);
     // create a new tag for the element
     var newScore = document.createElement("li"); 
     // set the text content
     newScore.textContent = initials + " - " + score;
-    console.log(newScore);
     // append to the html
     scoresListEl.append(newScore);
     highScoresScreenEl.classList.remove("hidden");
