@@ -45,4 +45,6 @@ An application that tests the knowledge of full stack web developers in a dynami
 
 ## Screenshot
 
+![Screenshot 2023-08-02 at 10 40 15 PM](https://github.com/coltondane/full-stack-quiz/assets/113216904/ab2f82df-24ba-4b0b-9fca-38357d109682)
+
     
